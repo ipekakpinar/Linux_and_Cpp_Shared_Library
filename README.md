@@ -6,6 +6,7 @@ logger.cpp: Writes logs to shared memory.
 log_to_file.cpp: Reads from the shared memory and writes to file.
 main.cpp: main.
 
+
 How to Compile?
 
 Terminal codes are below here:
@@ -21,6 +22,9 @@ export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:.
 ./logger
 
 ./main
+
+
+
 
 
 
