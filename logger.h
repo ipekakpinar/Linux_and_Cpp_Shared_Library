@@ -5,6 +5,7 @@
 #include <fcntl.h>
 #include <sys/mman.h>
 #include <unistd.h>
+#include <mutex>
 
 class Logger{
 
@@ -24,6 +25,7 @@ class Logger{
         void writeToSharedMemory(const std::string& message, LogLevel level);
         int shmFd;
         char* shmPtr;
+        std::mutex logmutex; 
 
 };
 
