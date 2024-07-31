@@ -3,6 +3,7 @@
 #include <iostream>
 #include <sys/mman.h>
 #include <fcntl.h>
+#include <mutex>
 
 Logger::Logger(const std::string &shmName)
 {
@@ -40,9 +41,12 @@ Logger::~Logger() {
 }
 
 
-
+std::mutex logmutex;
 
 void Logger::writeToSharedMemory(const std::string& message, LogLevel level) {
+
+    std::lockguard<std::mutex> lock(logmutex);
+    
     std::string levelStr;
     switch (level) {
         case LogLevel::INFO: levelStr = "INFO"; break;
